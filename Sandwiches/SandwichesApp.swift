@@ -11,9 +11,11 @@ import SwiftUI
 struct SandwichesApp: App {
     let persistenceController = PersistenceController.shared
 
+    @StateObject private var store = SandwichStore()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(store: store)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
